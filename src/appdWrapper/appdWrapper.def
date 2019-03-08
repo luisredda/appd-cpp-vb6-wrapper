@@ -1,0 +1,19 @@
+; appdWrapper.def - defines the exports for appdWrapper.dll
+
+LIBRARY appdWrapper
+
+EXPORTS
+
+
+AppD_Initialize
+AppD_Terminate
+AppD_StartBT
+AppD_EndBT
+AppD_BackEndDeclare
+AppD_SetIdentifyingProperty
+AppD_BackendAdd
+AppD_ExitCallBegin
+AppD_ExitCallEnd
+AppD_ExitCallSetDetails
+
+
