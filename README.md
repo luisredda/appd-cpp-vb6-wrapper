@@ -18,3 +18,17 @@ Please refer to [AppDynamics Documentation](https://docs.appdynamics.com/pages/v
 
 
 Important: This *wrapper* is not official part of product and not oficially supported by AppDynamics.
+
+#### Expected results:
+
+**Flowmap**
+
+![Flowmap](https://raw.githubusercontent.com/luisredda/appd-cpp-vb6-wrapper/master/FlowmapVB6.jpeg)
+
+**Business Transactions**
+
+![BTs](https://raw.githubusercontent.com/luisredda/appd-cpp-vb6-wrapper/master/BTVB6.jpeg)
+
+**Snapshot
+
+![Snapshot](https://raw.githubusercontent.com/luisredda/appd-cpp-vb6-wrapper/master/SnapshotVB6.jpeg)
