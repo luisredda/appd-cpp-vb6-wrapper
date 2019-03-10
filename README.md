@@ -29,6 +29,6 @@ Important: This *wrapper* is not official part of product and not oficially supp
 
 ![BTs](https://raw.githubusercontent.com/luisredda/appd-cpp-vb6-wrapper/master/BTVB6.jpeg)
 
-**Snapshot
+**Snapshot**
 
 ![Snapshot](https://raw.githubusercontent.com/luisredda/appd-cpp-vb6-wrapper/master/SnapshotVB6.jpeg)
