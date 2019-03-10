@@ -10,7 +10,7 @@ Please refer to [AppDynamics Documentation](https://docs.appdynamics.com/pages/v
 
 #### How to use
 
-1) Add the **mdlAppd.bas** file to your VB project and **appdWrapper.dll** to the desired location. Update this location on the bas module file. Remember that the AppDynamics C++ SDK (32 bit) library should be available on the machine path (C:\Windows\System32 and C:\Windows\SysWow64\)
+1) Add the **mdlAppd.bas** file to your VB project and **appdWrapper.dll** to the desired location. Update this location on the bas module file. Remember that the AppDynamics C++ SDK (32 bit) library (appdynamics.dll) should be available on the machine path (C:\Windows\System32 and C:\Windows\SysWow64\)
 
 2) Call the **AppD_Initialize** functions to set the controller connection, application, tier, node and log information.
 
