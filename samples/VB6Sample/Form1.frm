@@ -1,15 +1,23 @@
 VERSION 5.00
-Begin VB.Form Form1
+Begin VB.Form Form1 
    Caption         =   "AppDynamics VB6 Wrapper Simple Test"
-   ClientHeight    =   3210
+   ClientHeight    =   4485
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   4935
+   ClientWidth     =   7305
    LinkTopic       =   "Form1"
-   ScaleHeight     =   3210
-   ScaleWidth      =   4935
+   ScaleHeight     =   4485
+   ScaleWidth      =   7305
    StartUpPosition =   3  'Windows Default
-   Begin VB.TextBox Text1
+   Begin VB.CommandButton Command3 
+      Caption         =   "BT3 - Finish Order (With Error)"
+      Height          =   855
+      Left            =   4080
+      TabIndex        =   3
+      Top             =   1800
+      Width           =   2535
+   End
+   Begin VB.TextBox Text1 
       Height          =   285
       Left            =   1800
       TabIndex        =   2
@@ -17,20 +25,20 @@ Begin VB.Form Form1
       Top             =   240
       Width           =   1335
    End
-   Begin VB.CommandButton Command2
+   Begin VB.CommandButton Command2 
       Caption         =   "BT 2 - Cash Withdraw"
       Height          =   855
-      Left            =   960
+      Left            =   600
       TabIndex        =   1
-      Top             =   2040
+      Top             =   3000
       Width           =   2775
    End
-   Begin VB.CommandButton Command1
+   Begin VB.CommandButton Command1 
       Caption         =   "BT1 - Login"
       Height          =   855
-      Left            =   960
+      Left            =   600
       TabIndex        =   0
-      Top             =   840
+      Top             =   1800
       Width           =   2775
    End
 End
@@ -131,6 +139,50 @@ rv = AppD_EndBT(tokenBT)
 Next
 
 End Sub
+
+Private Sub Command3_Click()
+Dim tokenBT, tokenExitCall As String
+tokenBT = GetGUID
+tokenExitCall = GetGUID
+Dim valor As String
+valor = Text1.Text
+
+'Start the Business Transaction Execution for Cash WithDraw Transaction
+rv = AppD_StartBT("Finish Order", "NullCorrelation", tokenBT)
+
+'---
+'Your code would be here
+'---
+
+'Declare the Database Backend
+rv = AppD_BackEndDeclare("DB", "SQLPRD06")
+rv = AppD_SetIdentifyingProperty("SQLPRD06", "HOST", "SQLPRD06.company.com")
+rv = AppD_SetIdentifyingProperty("SQLPRD06", "PORT", "1433")
+rv = AppD_SetIdentifyingProperty("SQLPRD06", "DATABASE", "DBUsuarios")
+rv = AppD_SetIdentifyingProperty("SQLPRD06", "VENDOR", "Microsoft")
+rv = AppD_BackendAdd("SQLPRD06")
+
+'Start the Exit Call (DB) Execution
+rv = AppD_ExitCallBegin(tokenBT, tokenExitCall, "SQLPRD06")
+rv = AppD_ExitCallSetDetails(tokenExitCall, "SELECT USERNAME FROM AUTHENTICATION WHERE USERNAME=JOHN")
+
+'Set the error in the BT. You would to use a error handling function ideally
+rv = AppD_AddBTError(tokenBT, 2, "Error to connecto to database: Null Connection String", 1)
+
+Sleep Val(valor) 'Sleep to simulate a query execution/slowness
+
+
+'Terminate the Exit Call Execution
+rv = AppD_ExitCallEnd(tokenExitCall)
+
+'---
+' Your code would terminate here
+'---
+
+' Terminate the Business Transaction Execution
+rv = AppD_EndBT(tokenBT)
+End Sub
+
 
 Private Sub Form_Load()
 
