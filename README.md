@@ -3,6 +3,7 @@
 #### Functions available
 * Agent Initialization & Termination
 * Start & End Business Transactions
+* Resport Errors in Business Transaction execution
 * Declare Backends & Properties
 * Begin & End Exit Calls
 
