@@ -18,6 +18,7 @@ Attribute VB_Name = "AppDynamics"
     Public Declare Function AppD_ExitCallBegin Lib "c:\\appdlib\\appdWrapper.dll" (ByVal BTHandleGuid As String, ByVal ExitCallGuid As String, ByVal BackEnd As String) As Integer
     Public Declare Function AppD_ExitCallEnd Lib "c:\\appdlib\\appdWrapper.dll" (ByVal ExitCallGuid As String) As Integer
     Public Declare Function AppD_ExitCallSetDetails Lib "c:\\appdlib\\appdWrapper.dll" (ByVal ExitCallGuid As String, ByVal Details As String) As Integer
+    Public Declare Function AppD_AddBTError Lib "c:\\appdlib\\appdWrapper.dll" (ByVal guid As String, ByVal level As Integer, ByVal message As String, ByVal mark_bt_as_error As Integer) As Integer
 
 Public Type Guid
     Data1 As Long
